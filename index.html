@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>法枠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    ノリワク
+  </header>
+  <div class="main">
+    <div id="droparea">Upload an image</div>
+  </div>
+  <div class="container">
+    <svg id="svg2" style="opacity:0"></svg>
+  </div>
+  <div class="buttons">
+    <!-- <button onclick="downloadSVG()">Download SVG</button> -->
+    <a id="d" onclick="downloadSVG()" download="w3logo">Download SVG</a>
+  </div>
+  <script src="js/pixel.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/canny.js"></script>
+  <script src="js/helpers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/jquery-1.10.1.min.js"></script>
+  <script src="js/contour.js"></script>
+  <script src="js/image-provider.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function downloadSVG() {
+      var svg = document.querySelector('.container svg');
+      var serializer = new XMLSerializer();
+      var source = serializer.serializeToString(svg);
+
+      //add name spaces.
+      if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+          source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+      }
+      if(!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)){
+          source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+      }
+
+      //add xml declaration
+      source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+
+      //convert svg source to URI data scheme.
+      var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+
+      //set url value to a element's href attribute.
+      document.getElementById("d").href = url;
+    
+      // document.getElementById("d").href = URL.createObjectURL(svg);
+    }
+    </script>
+</body>
+</html>
