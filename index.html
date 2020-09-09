@@ -7,19 +7,33 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    ノリワク
-  </header>
+  <div class="header">
+    <h4 class="wordCarousel">    
+      <div> 
+    <!--        Use classes 2,3, or 4 to match the number of words --> 
+          <ul class="flip4"> 
+              <li>法枠</li>
+              <li>のり枠</li>
+              <li>のりわく</li> 
+              <li>ノリワク</li>  
+          </ul>
+      </div>
+      <div>検出</div>
+    </h4>
+  </div>
   <div class="main">
-    <div id="droparea">Upload an image</div>
+    <span>アップロード</span>
+    <svg width="13px" height="10px" viewBox="0 0 13 10">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
   </div>
   <div class="container">
     <svg id="svg2" style="opacity:0"></svg>
   </div>
-  <div class="buttons">
-    <!-- <button onclick="downloadSVG()">Download SVG</button> -->
+  <!-- <div class="buttons">
     <a id="d" onclick="downloadSVG()" download="w3logo">Download SVG</a>
-  </div>
+  </div> -->
   <script src="js/pixel.js"></script>
   <script src="js/canvas.js"></script>
   <script src="js/canny.js"></script>

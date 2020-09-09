@@ -31,7 +31,7 @@
   var imageProvider = new ImageProvider({
     element: dropAreaElement,
     onImageRead: function(image) {
-      dropAreaElement.classList.add('dropped');
+      // dropAreaElement.classList.add('dropped');
       imageWidth = image.width;
       if (image.width > image.height) {
         resultWidth = Math.min(image.width, maxResolution);
